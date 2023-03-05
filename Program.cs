@@ -48,4 +48,19 @@ app.MapPost("/order/add", async (HttpContext context, IDaoOrder dao, Order order
     return await dao.AddOrder(order);
 });
 
+app.MapGet("/order/get", async (HttpContext context, IDaoOrder dao, int id) =>
+{
+    return await dao.GetById(id);
+});
+
+app.MapPost("/order/update", async (HttpContext context, IDaoOrder dao, Order order) =>
+{
+    return await dao.UpdateOrder(order);
+});
+
+app.MapGet("/order/delete", async (HttpContext context, IDaoOrder dao, int id) =>
+{
+    return await dao.DeleteOrder(id);
+});
+
 app.Run();

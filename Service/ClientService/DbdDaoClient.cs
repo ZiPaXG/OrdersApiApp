@@ -22,10 +22,6 @@ namespace OrdersApiApp.Service.ClientService
 
         public async Task<bool> DeleteClient(int id)
         {
-            //if (context.Orders.Count(order => order.ClientId == id) > 0)
-            //{
-
-            //}
             Client? client = await context.Clients.FirstOrDefaultAsync(t => t.Id == id);
             context.Clients.Remove(client);
             try

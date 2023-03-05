@@ -37,14 +37,17 @@ namespace OrdersApiApp.Service.OrderService
             return await context.Orders.ToListAsync();
         }
 
-        public Task<Order> GetById(int id)
+        public async Task<Order> GetById(int id)
         {
-            throw new NotImplementedException();
+            Order? order = await context.Orders.FirstOrDefaultAsync(t => t.Id == id);
+            return order;
         }
 
-        public Task<Order> UpdateOrder(Order order)
+        public async Task<Order> UpdateOrder(Order order)
         {
-            throw new NotImplementedException();
+            context.Orders.Update(order);
+            await context.SaveChangesAsync();
+            return order;
         }
     }
 }
