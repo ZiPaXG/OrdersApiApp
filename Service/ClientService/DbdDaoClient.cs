@@ -4,7 +4,7 @@ using OrdersApiApp.Model.Entity;
 
 namespace OrdersApiApp.Service.ClientService
 {
-    public class DbdDaoClient : IDaoClient
+    public class DbdDaoClient : IDaoTemplate<Client>
     {
         public ApplicationDbContext context;
         public DbdDaoClient(ApplicationDbContext context)
@@ -12,7 +12,7 @@ namespace OrdersApiApp.Service.ClientService
             this.context = context;
         }
 
-        public async Task<Client> AddClient(Client client)
+        public async Task<Client> Add(Client client)
         {
             client.Id = await context.Clients.CountAsync() + 1;
             await context.Clients.AddAsync(client);
@@ -20,7 +20,7 @@ namespace OrdersApiApp.Service.ClientService
             return await Task.Run(() => client);
         }
 
-        public async Task<bool> DeleteClient(int id)
+        public async Task<bool> Delete(int id)
         {
             Client? client = await context.Clients.FirstOrDefaultAsync(t => t.Id == id);
             context.Clients.Remove(client);
@@ -36,7 +36,7 @@ namespace OrdersApiApp.Service.ClientService
             
         }
 
-        public async Task<List<Client>> GetAllClients()
+        public async Task<List<Client>> GetAll()
         {
             return await Task.Run(() => context.Clients.ToListAsync());
         }
@@ -47,7 +47,7 @@ namespace OrdersApiApp.Service.ClientService
             return await Task.Run(() => client);
         }
 
-        public async Task<Client> UpdateClient(Client client)
+        public async Task<Client> Update(Client client)
         {
             context.Clients.Update(client);
             await context.SaveChangesAsync();

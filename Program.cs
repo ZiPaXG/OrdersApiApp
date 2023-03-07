@@ -1,5 +1,6 @@
 using OrdersApiApp.Model;
 using OrdersApiApp.Model.Entity;
+using OrdersApiApp.Service;
 using OrdersApiApp.Service.ClientService;
 using OrdersApiApp.Service.OrderProductService;
 using OrdersApiApp.Service.OrderService;
@@ -7,87 +8,89 @@ using OrdersApiApp.Service.OrderService;
 var builder = WebApplication.CreateBuilder(args);
 // добавление зависимостей
 builder.Services.AddDbContext<ApplicationDbContext>();
-builder.Services.AddTransient<IDaoClient, DbdDaoClient>();
-builder.Services.AddTransient<IDaoOrder, DbdDaoOrder>();
-builder.Services.AddTransient<IDaoOrderProduct, DbdDaoOrderProduct>();
+builder.Services.AddTransient<IDaoTemplate<Client>, DbdDaoClient>();
+builder.Services.AddTransient<IDaoTemplate<Order>, DbdDaoOrder>();
+builder.Services.AddTransient<IDaoTemplate<OrderProduct>, DbdDaoOrderProduct>();
 
 var app = builder.Build();
 
 app.MapGet("/", () => "Hello World!");
 
-app.MapGet("/client/all", async (HttpContext context, IDaoClient dao) =>
+app.MapGet("/client/all", async (HttpContext context, IDaoTemplate<Client> dao) =>
 {
-    return await dao.GetAllClients();
+    return await dao.GetAll();
 });
 
-app.MapPost("/client/add", async (HttpContext context, IDaoClient dao, Client client) =>
+app.MapPost("/client/add", async (HttpContext context, IDaoTemplate<Client> dao, Client client) =>
 {
-    return await dao.AddClient(client);
+    return await dao.Add(client);
 });
 
-app.MapGet("/client/delete", async (HttpContext context, IDaoClient dao, int id) =>
+app.MapGet("/client/delete", async (HttpContext context, IDaoTemplate<Client> dao, int id) =>
 {
-    return await dao.DeleteClient(id);
+    return await dao.Delete(id);
 });
 
-app.MapGet("/client/get", async (HttpContext context, IDaoClient dao, int id) =>
+app.MapGet("/client/get", async (HttpContext context, IDaoTemplate<Client> dao, int id) =>
 {
     return await dao.GetById(id);
 });
 
-app.MapPost("/client/update", async (HttpContext context, IDaoClient dao, Client client) =>
+app.MapPost("/client/update", async (HttpContext context, IDaoTemplate<Client> dao, Client client) =>
 {
-    return await dao.UpdateClient(client);
+    return await dao.Update(client);
 });
 
-app.MapGet("/order/all", async (HttpContext context, IDaoOrder dao) =>
+// Order
+
+app.MapGet("/order/all", async (HttpContext context, IDaoTemplate<Order> dao) =>
 {
-    return await dao.GetAllOrders();
+    return await dao.GetAll();
 });
 
-app.MapPost("/order/add", async (HttpContext context, IDaoOrder dao, Order order) =>
+app.MapPost("/order/add", async (HttpContext context, IDaoTemplate<Order> dao, Order order) =>
 {
-    return await dao.AddOrder(order);
+    return await dao.Add(order);
 });
 
-app.MapGet("/order/get", async (HttpContext context, IDaoOrder dao, int id) =>
+app.MapGet("/order/get", async (HttpContext context, IDaoTemplate<Order> dao, int id) =>
 {
     return await dao.GetById(id);
 });
 
-app.MapPost("/order/update", async (HttpContext context, IDaoOrder dao, Order order) =>
+app.MapPost("/order/update", async (HttpContext context, IDaoTemplate<Order> dao, Order order) =>
 {
-    return await dao.UpdateOrder(order);
+    return await dao.Update(order);
 });
 
-app.MapGet("/order/delete", async (HttpContext context, IDaoOrder dao, int id) =>
+app.MapGet("/order/delete", async (HttpContext context, IDaoTemplate<Order> dao, int id) =>
 {
-    return await dao.DeleteOrder(id);
+    return await dao.Delete(id);
 });
 
-app.MapGet("/orderProduct/all", async (HttpContext context, IDaoOrderProduct dao) =>
+app.MapGet("/orderProduct/all", async (HttpContext context, IDaoTemplate<OrderProduct> dao) =>
 {
-    return await dao.GetAllOrderProduct();
+    return await dao.GetAll();
 });
 
-app.MapPost("/orderProduct/add", async (HttpContext context, IDaoOrderProduct dao, OrderProduct orderProduct) =>
+app.MapPost("/orderProduct/add", async (HttpContext context, IDaoTemplate<OrderProduct> dao, OrderProduct orderProduct) =>
 {
-    return await dao.AddOrderProduct(orderProduct);
+    return await dao.Add(orderProduct);
 });
 
-app.MapGet("/orderProduct/get", async (HttpContext context, IDaoOrderProduct dao, int id) =>
+app.MapGet("/orderProduct/get", async (HttpContext context, IDaoTemplate<OrderProduct> dao, int id) =>
 {
     return await dao.GetById(id);
 });
 
-app.MapPost("/orderProduct/update", async (HttpContext context, IDaoOrderProduct dao, OrderProduct orderProduct) =>
+app.MapPost("/orderProduct/update", async (HttpContext context, IDaoTemplate<OrderProduct> dao, OrderProduct orderProduct) =>
 {
-    return await dao.UpdateOrderProduct(orderProduct);
+    return await dao.Update(orderProduct);
 });
 
-app.MapGet("/orderProduct/delete", async (HttpContext context, IDaoOrderProduct dao, int id) =>
+app.MapGet("/orderProduct/delete", async (HttpContext context, IDaoTemplate<OrderProduct> dao, int id) =>
 {
-    return await dao.DeleteOrderProduct(id);
+    return await dao.Delete(id);
 });
 
 app.Run();
