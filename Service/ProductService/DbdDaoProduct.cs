@@ -33,6 +33,7 @@ namespace OrdersApiApp.Service.ProductService
 
         public async Task<List<Product>> GetAll()
         {
+            await context.Products.LoadAsync();
             return await context.Products.ToListAsync();
         }
 

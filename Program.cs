@@ -99,27 +99,27 @@ app.MapGet("/orderProduct/delete", async (HttpContext context, IDaoTemplate<Orde
 
 // Product
 
-app.MapGet("/product/all", async (HttpContext context, IDaoTemplate<OrderProduct> dao) =>
+app.MapGet("/product/all", async (HttpContext context, IDaoTemplate<Product> dao) =>
 {
     return await dao.GetAll();
 });
 
-app.MapPost("/product/add", async (HttpContext context, IDaoTemplate<OrderProduct> dao, OrderProduct orderProduct) =>
+app.MapPost("/product/add", async (HttpContext context, IDaoTemplate<Product> dao, Product product) =>
 {
-    return await dao.Add(orderProduct);
+    return await dao.Add(product);
 });
 
-app.MapGet("/product/get", async (HttpContext context, IDaoTemplate<OrderProduct> dao, int id) =>
+app.MapGet("/product/get", async (HttpContext context, IDaoTemplate<Product> dao, int id) =>
 {
     return await dao.GetById(id);
 });
 
-app.MapPost("/product/update", async (HttpContext context, IDaoTemplate<OrderProduct> dao, OrderProduct orderProduct) =>
+app.MapPost("/product/update", async (HttpContext context, IDaoTemplate<Product> dao, Product product) =>
 {
-    return await dao.Update(orderProduct);
+    return await dao.Update(product);
 });
 
-app.MapGet("/product/delete", async (HttpContext context, IDaoTemplate<OrderProduct> dao, int id) =>
+app.MapGet("/product/delete", async (HttpContext context, IDaoTemplate<Product> dao, int id) =>
 {
     return await dao.Delete(id);
 });
