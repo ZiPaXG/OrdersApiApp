@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using OrdersApiApp.Model;
@@ -11,9 +12,11 @@ using OrdersApiApp.Model;
 namespace OrdersApiApp.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230311115139_AddCollectionProducts")]
+    partial class AddCollectionProducts
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -104,9 +107,6 @@ namespace OrdersApiApp.Migrations
 
                     b.Property<int?>("OrderId")
                         .HasColumnType("integer");
-
-                    b.Property<float>("Price")
-                        .HasColumnType("real");
 
                     b.HasKey("Id");
 

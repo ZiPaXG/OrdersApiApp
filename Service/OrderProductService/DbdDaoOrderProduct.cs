@@ -42,6 +42,21 @@ namespace OrdersApiApp.Service.OrderProductService
             return orderProduct;
         }
 
+        public async Task<List<OrderProduct>> GetProductsInOrderById(int id)
+        {
+            List<OrderProduct> orderProducts = await context.OrderProducts.Where(t => t.OrderId == id).ToListAsync();
+            await context.Orders.LoadAsync();
+            await context.Products.LoadAsync();
+            await context.Clients.LoadAsync();
+            return orderProducts;
+        }
+
+        public async Task<List<OrderProduct>> GetByOrderId(int id)
+        {
+            await context.Products.LoadAsync();
+            return await context.OrderProducts.Where(t => t.OrderId == id).ToListAsync();
+        }
+
         public async Task<OrderProduct> Update(OrderProduct orderProduct)
         {
             context.OrderProducts.Update(orderProduct);

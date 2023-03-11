@@ -97,6 +97,27 @@ app.MapGet("/orderProduct/delete", async (HttpContext context, IDaoTemplate<Orde
     return await dao.Delete(id);
 });
 
+app.MapGet("/orderProduct/getProductsInOrder", async (HttpContext context, IDaoTemplate<OrderProduct> dao, int id) =>
+{
+    return await ((DbdDaoOrderProduct)dao).GetProductsInOrderById(id);
+});
+
+// Чек
+
+app.MapGet("/bill", async (HttpContext context, IDaoTemplate<OrderProduct> dao, int id) =>
+{
+    float totalPrice = 0;
+    List<Product> products = new List<Product>();
+    List<OrderProduct> orderProducts = await ((DbdDaoOrderProduct)dao).GetByOrderId(id);
+    foreach(OrderProduct orderProduct in orderProducts)
+    {
+        products.Add(orderProduct.Product);
+        totalPrice += orderProduct.Product.Price * orderProduct.CountProduct;
+    }
+    var bill = new { Products = products, TotalPrice = totalPrice };
+    return bill;
+});
+
 // Product
 
 app.MapGet("/product/all", async (HttpContext context, IDaoTemplate<Product> dao) =>

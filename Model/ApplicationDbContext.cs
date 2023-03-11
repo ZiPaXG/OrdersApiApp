@@ -18,6 +18,7 @@ namespace OrdersApiApp.Model
                 .AddJsonFile("appsettings.json")
                 .Build();
 
+            //string useConnection = configuration.GetSection("UserConnectionString").Value;
             // устанавливаем для контекста строку подключения
             // инициализируем саму строку подключения
             optionsBuilder.UseNpgsql(configuration.GetConnectionString("DefaultConnection"));
