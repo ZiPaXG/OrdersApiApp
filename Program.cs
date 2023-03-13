@@ -70,13 +70,6 @@ app.MapGet("/order/delete", async (HttpContext context, IDaoTemplate<Order> dao,
     return await dao.Delete(id);
 });
 
-// Удаление заказа
-
-app.MapGet("/deleteOrderAll", async (HttpContext context, IDaoTemplate<Order> dao, int id) =>
-{
-    return await ((DbdDaoOrder)dao).DeleteOrderAll(id);
-});
-
 // OrderProduct
 
 app.MapGet("/orderProduct/all", async (HttpContext context, IDaoTemplate<OrderProduct> dao) =>

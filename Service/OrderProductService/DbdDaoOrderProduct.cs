@@ -21,13 +21,24 @@ namespace OrdersApiApp.Service.OrderProductService
 
         public async Task<bool> Delete(int id)
         {
-            OrderProduct? orderProduct = await context.OrderProducts.FirstOrDefaultAsync(t => t.Id == id);
-            if (orderProduct != null)
+            try
             {
-                context.OrderProducts.Remove(orderProduct);
+                IEnumerable<OrderProduct> orderProduct = await context.OrderProducts.Where(t => t.Id == id).ToListAsync();
+                if(orderProduct.Count() == 1)
+                {
+                    Order? order = orderProduct.First().Order;
+                    context.Orders.Remove(order);
+                }
+                context.OrderProducts.Remove(orderProduct.First());
+
                 await context.SaveChangesAsync();
+                return true;
             }
-            return orderProduct != null;
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return false;
+            }
         }
 
         public async Task<List<OrderProduct>> GetAll()
@@ -56,7 +67,7 @@ namespace OrdersApiApp.Service.OrderProductService
             await context.Products.LoadAsync();
             return await context.OrderProducts.Where(t => t.OrderId == id).ToListAsync();
         }
-        
+
         public async Task<OrderProduct> Update(OrderProduct orderProduct)
         {
             context.OrderProducts.Update(orderProduct);

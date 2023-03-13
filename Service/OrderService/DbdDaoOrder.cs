@@ -20,17 +20,6 @@ namespace OrdersApiApp.Service.OrderService
             return order;
         }
 
-        public async Task<bool> Delete(int id)
-        {
-            Order order = await context.Orders.FirstOrDefaultAsync(o => o.Id == id);
-            if (order != null)
-            {
-                context.Orders.Remove(order);
-                await context.SaveChangesAsync();
-            }
-            return order != null;
-        }
-
         public async Task<List<Order>> GetAll()
         {
             await context.Clients.LoadAsync();
@@ -43,13 +32,15 @@ namespace OrdersApiApp.Service.OrderService
             return order;
         }
 
-        public async Task<bool> DeleteOrderAll(int id)
+        public async Task<bool> Delete(int id)
         {
             try
             {
                 await context.OrderProducts.LoadAsync();
                 IEnumerable<OrderProduct> result = await context.OrderProducts.Where(t => t.OrderId == id).ToListAsync();
-                context.OrderProducts.RemoveRange(result);
+                if (result.Count() != 0)
+                    context.OrderProducts.RemoveRange(result);
+
                 Order? order = await context.Orders.FirstOrDefaultAsync(t => t.Id == id);
                 if (order != null )
                 {
