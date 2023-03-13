@@ -43,6 +43,32 @@ namespace OrdersApiApp.Service.OrderService
             return order;
         }
 
+        public async Task<bool> DeleteOrderAll(int id)
+        {
+            try
+            {
+                await context.OrderProducts.LoadAsync();
+                IEnumerable<OrderProduct> result = await context.OrderProducts.Where(t => t.OrderId == id).ToListAsync();
+                context.OrderProducts.RemoveRange(result);
+                Order? order = await context.Orders.FirstOrDefaultAsync(t => t.Id == id);
+                if (order != null )
+                {
+                    context.Orders.Remove(order);
+                    await context.SaveChangesAsync();
+                }
+                else
+                {
+                    throw new Exception();
+                }
+                return true;
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return false;
+            }
+        }
+
         public async Task<Order> Update(Order order)
         {
             context.Orders.Update(order);

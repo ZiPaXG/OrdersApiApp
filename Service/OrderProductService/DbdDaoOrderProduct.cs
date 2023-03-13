@@ -56,7 +56,7 @@ namespace OrdersApiApp.Service.OrderProductService
             await context.Products.LoadAsync();
             return await context.OrderProducts.Where(t => t.OrderId == id).ToListAsync();
         }
-
+        
         public async Task<OrderProduct> Update(OrderProduct orderProduct)
         {
             context.OrderProducts.Update(orderProduct);
