@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "nPrN947uS/53TiwE7UbuehACOIU8vWZ5eUD2CimLbicNRbly+g0ZMK3AiejeHuhB46jCDoFn47WV+fBoLLBZWQ==",
+  "dgSpecHash": "Dd7O2fZ6uK5j3R2A3ELQ6TKt4N+pQh3W+ZFnqj4nKYor7OCSZ9HBp0GXBW9Bn2Sdgt7hdyLNLaoxETmxQn7lsw==",
   "success": true,
   "projectFilePath": "D:\\C# WEB\\ASP\\OrdersApiApp\\OrdersApiApp\\OrdersApiApp.csproj",
   "expectedPackageFiles": [
@@ -24,6 +24,7 @@
     "C:\\Users\\shepe\\.nuget\\packages\\microsoft.extensions.primitives\\7.0.0\\microsoft.extensions.primitives.7.0.0.nupkg.sha512",
     "C:\\Users\\shepe\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",
+    "C:\\Users\\shepe\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.17.0\\microsoft.visualstudio.azure.containers.tools.targets.1.17.0.nupkg.sha512",
     "C:\\Users\\shepe\\.nuget\\packages\\microsoft.win32.primitives\\4.3.0\\microsoft.win32.primitives.4.3.0.nupkg.sha512",
     "C:\\Users\\shepe\\.nuget\\packages\\mono.texttemplating\\2.2.1\\mono.texttemplating.2.2.1.nupkg.sha512",
     "C:\\Users\\shepe\\.nuget\\packages\\netstandard.library\\1.6.1\\netstandard.library.1.6.1.nupkg.sha512",
