@@ -23,17 +23,14 @@ namespace OrdersApiApp.Service.OrderProductService
         {
             try
             {
-                await context.Orders.LoadAsync();
-                OrderProduct? orderProduct = await context.OrderProducts.FirstOrDefaultAsync(t => t.Id == id);
-                // Ищем все OrderProduct, которые принадлежат одному Order
-                IEnumerable<OrderProduct> productsInOrder = await context.OrderProducts.Where(t => t.OrderId == orderProduct.OrderId).ToListAsync();
-                //Если он последний - удаляем и заказ
-                if(productsInOrder.Count() == 1)
+                IEnumerable<OrderProduct> orderProduct = await context.OrderProducts.Where(t => t.Id == id).ToListAsync();
+                if(orderProduct.Count() == 1)
                 {
-                    Order? order = await context.Orders.FirstOrDefaultAsync(t => t.Id == orderProduct.OrderId);
+                    Order? order = orderProduct.First().Order;
                     context.Orders.Remove(order);
                 }
-                context.OrderProducts.Remove(orderProduct);
+                context.OrderProducts.Remove(orderProduct.First());
+
                 await context.SaveChangesAsync();
                 return true;
             }
