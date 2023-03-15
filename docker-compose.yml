@@ -1,0 +1,28 @@
+version: '3.4'
+
+services:
+  ordersapiapp:
+    container_name: application
+    image: ${DOCKER_REGISTRY-}ordersapiapp
+    ports: 
+        - "5005:443"
+    build:
+      context: .
+      dockerfile: OrdersApiApp/Dockerfile
+    networks:
+      - internal
+
+  database:
+    image: postgres:latest
+    container_name: db_postgres
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=OrderDb
+    ports:
+      - "5432:5432"
+    networks:
+      - internal
+networks:
+  internal:
+    driver: bridge
