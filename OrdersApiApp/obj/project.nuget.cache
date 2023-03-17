@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "We70hHKzHjLqsZ3St7UZMyC3bxl5JHGLYLHblJvbO5idFBoxRvOLeW17lyrek1ZUbg1lP6b9+IgKOqgK3voogw==",
+  "dgSpecHash": "TGQjKNjAMEMwyFGVfhZY2pJfvAJyARTdIMXErPVzQSBG5ibFxG85p1KUlj/kNobdXw83t6wIzWw0sdtnlmB35Q==",
   "success": true,
-  "projectFilePath": "D:\\C# WEB\\ASP\\OrdersApiApp\\OrdersApiApp\\OrdersApiApp.csproj",
+  "projectFilePath": "D:\\C# WEB\\ASP\\OrdersApiApp-withSLN\\OrdersApiApp\\OrdersApiApp.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\shepe\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\shepe\\.nuget\\packages\\microsoft.entityframeworkcore\\7.0.3\\microsoft.entityframeworkcore.7.0.3.nupkg.sha512",

@@ -1,4 +1,4 @@
-name: dockercompose16095651675575221747
+name: dockercompose8165488421790383173
 services:
   database:
     container_name: db_postgres
@@ -16,7 +16,7 @@ services:
       protocol: tcp
   ordersapiapp:
     build:
-      context: D:\C# WEB\ASP\OrdersApiApp
+      context: D:\C# WEB\ASP\OrdersApiApp-withSLN
       dockerfile: OrdersApiApp/Dockerfile
       labels:
         com.microsoft.created-by: visual-studio
@@ -57,7 +57,7 @@ services:
     tty: true
     volumes:
     - type: bind
-      source: D:\C# WEB\ASP\OrdersApiApp\OrdersApiApp
+      source: D:\C# WEB\ASP\OrdersApiApp-withSLN\OrdersApiApp
       target: /app
       bind:
         create_host_path: true
@@ -97,11 +97,11 @@ services:
       bind:
         create_host_path: true
     - type: bind
-      source: D:\C# WEB\ASP\OrdersApiApp
+      source: D:\C# WEB\ASP\OrdersApiApp-withSLN
       target: /src
       bind:
         create_host_path: true
 networks:
   internal:
-    name: dockercompose16095651675575221747_internal
+    name: dockercompose8165488421790383173_internal
     driver: bridge

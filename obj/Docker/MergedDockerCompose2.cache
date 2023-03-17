@@ -18,11 +18,27 @@ services:
     build:
       context: D:\C# WEB\ASP\OrdersApiApp-withSLN
       dockerfile: OrdersApiApp/Dockerfile
+      labels:
+        com.microsoft.created-by: visual-studio
+        com.microsoft.visual-studio.project-name: OrdersApiApp
     container_name: application
+    entrypoint:
+    - tail
+    - -f
+    - /dev/null
     environment:
       ASPNETCORE_ENVIRONMENT: Development
       ASPNETCORE_URLS: https://+:443;http://+:80
     image: ordersapiapp
+    labels:
+      com.microsoft.visual-studio.project-name: OrdersApiApp
+      com.microsoft.visualstudio.debuggee.arguments: ' --additionalProbingPath /root/.nuget/packages
+        --additionalProbingPath /root/.nuget/fallbackpackages --additionalProbingPath
+        /root/.nuget/fallbackpackages2  "/app/OrdersApiApp.dll"'
+      com.microsoft.visualstudio.debuggee.killprogram: /bin/sh -c "if PID=$$(pidof
+        dotnet); then kill $$PID; fi"
+      com.microsoft.visualstudio.debuggee.program: dotnet
+      com.microsoft.visualstudio.debuggee.workingdirectory: /app
     networks:
       internal: null
     ports:
@@ -36,16 +52,22 @@ services:
       target: 443
       published: "5005"
       protocol: tcp
+    tty: true
     volumes:
     - type: bind
-      source: C:\Users\shepe\AppData\Roaming/Microsoft/UserSecrets
-      target: /root/.microsoft/usersecrets
-      read_only: true
+      source: C:\Users\shepe\vsdbg\vs2017u5
+      target: /remote_debugger
       bind:
         create_host_path: true
     - type: bind
       source: C:\Users\shepe\AppData\Roaming/ASP.NET/Https
       target: /root/.aspnet/https
+      read_only: true
+      bind:
+        create_host_path: true
+    - type: bind
+      source: C:\Users\shepe\AppData\Roaming/Microsoft/UserSecrets
+      target: /root/.microsoft/usersecrets
       read_only: true
       bind:
         create_host_path: true

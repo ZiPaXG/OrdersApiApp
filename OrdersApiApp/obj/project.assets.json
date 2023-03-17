@@ -5644,11 +5644,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\C# WEB\\ASP\\OrdersApiApp\\OrdersApiApp\\OrdersApiApp.csproj",
+      "projectUniqueName": "D:\\C# WEB\\ASP\\OrdersApiApp-withSLN\\OrdersApiApp\\OrdersApiApp.csproj",
       "projectName": "OrdersApiApp",
-      "projectPath": "D:\\C# WEB\\ASP\\OrdersApiApp\\OrdersApiApp\\OrdersApiApp.csproj",
+      "projectPath": "D:\\C# WEB\\ASP\\OrdersApiApp-withSLN\\OrdersApiApp\\OrdersApiApp.csproj",
       "packagesPath": "C:\\Users\\shepe\\.nuget\\packages\\",
-      "outputPath": "D:\\C# WEB\\ASP\\OrdersApiApp\\OrdersApiApp\\obj\\",
+      "outputPath": "D:\\C# WEB\\ASP\\OrdersApiApp-withSLN\\OrdersApiApp\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
