@@ -1,6 +1,7 @@
 using OrdersApiApp.Model;
 using OrdersApiApp.Model.Entity;
 using OrdersApiApp.Service;
+using OrdersApiApp.Service.BillService;
 using OrdersApiApp.Service.ClientService;
 using OrdersApiApp.Service.OrderProductService;
 using OrdersApiApp.Service.OrderService;
@@ -9,10 +10,11 @@ using OrdersApiApp.Service.ProductService;
 var builder = WebApplication.CreateBuilder(args);
 // добавление зависимостей
 builder.Services.AddDbContext<ApplicationDbContext>();
-builder.Services.AddTransient<IDaoTemplate<Client>, DbdDaoClient>();
-builder.Services.AddTransient<IDaoTemplate<Order>, DbdDaoOrder>();
-builder.Services.AddTransient<IDaoTemplate<OrderProduct>, DbdDaoOrderProduct>();
-builder.Services.AddTransient<IDaoTemplate<Product>, DbdDaoProduct>();
+builder.Services.AddTransient<IDaoTemplate<Client>, DbDaoClient>();
+builder.Services.AddTransient<IDaoTemplate<Order>, DbDaoOrder>();
+builder.Services.AddTransient<IDaoTemplate<OrderProduct>, DbDaoOrderProduct>();
+builder.Services.AddTransient<IDaoTemplate<Product>, DbDaoProduct>();
+builder.Services.AddTransient<IDaoOrderProduct, DbDaoOrderProduct>();
 
 var app = builder.Build();
 
@@ -97,18 +99,19 @@ app.MapGet("/orderProduct/delete", async (HttpContext context, IDaoTemplate<Orde
     return await dao.Delete(id);
 });
 
-app.MapGet("/orderProduct/getProductsInOrder", async (HttpContext context, IDaoTemplate<OrderProduct> dao, int id) =>
+app.MapGet("/orderProduct/getProductsInOrder", async (HttpContext context, IDaoOrderProduct dao, int id) =>
 {
-    return await ((DbdDaoOrderProduct)dao).GetProductsInOrderById(id);
+    return await dao.GetProductsInOrderById(id);
 });
 
 // Чек
 
-app.MapGet("/bill", async (HttpContext context, IDaoTemplate<OrderProduct> dao, int id) =>
+app.MapGet("/bill", async (HttpContext context, IDaoOrderProduct dao, int id) =>
 {
     float totalPrice = 0;
     List<Product> products = new List<Product>();
-    List<OrderProduct> orderProducts = await ((DbdDaoOrderProduct)dao).GetByOrderId(id);
+    List<OrderProduct> orderProducts = await dao.GetByOrderId(id);
+    // Собираем продукты заказа и суммируем цену товаров
     foreach(OrderProduct orderProduct in orderProducts)
     {
         products.Add(orderProduct.Product);

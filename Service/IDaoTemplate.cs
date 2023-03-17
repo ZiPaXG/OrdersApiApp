@@ -2,6 +2,9 @@
 
 namespace OrdersApiApp.Service
 {
+    // Dao - data access object
+    // Шаблон CRUD операций
+
     public interface IDaoTemplate<T>
     {
         Task<List<T>> GetAll();
