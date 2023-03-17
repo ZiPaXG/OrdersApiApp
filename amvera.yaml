@@ -1,2 +1,2 @@
 build:
-  dockerfile: ./DeployApp/Dockerfile
+  dockerfile: ./OrdersApiApp/Dockerfile
