@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "TGQjKNjAMEMwyFGVfhZY2pJfvAJyARTdIMXErPVzQSBG5ibFxG85p1KUlj/kNobdXw83t6wIzWw0sdtnlmB35Q==",
+  "dgSpecHash": "llisv3oEUYzsB82YfKiMZqo9qkwoh5DtC/DCO+BIMnfpFdwZMtq5AbPyezptTJVAdrBb29njhANjAKOS2BuHeA==",
   "success": true,
   "projectFilePath": "D:\\C# WEB\\ASP\\OrdersApiApp-withSLN\\OrdersApiApp\\OrdersApiApp.csproj",
   "expectedPackageFiles": [
@@ -24,6 +24,7 @@
     "C:\\Users\\shepe\\.nuget\\packages\\microsoft.extensions.primitives\\7.0.0\\microsoft.extensions.primitives.7.0.0.nupkg.sha512",
     "C:\\Users\\shepe\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",
+    "C:\\Users\\shepe\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.17.0\\microsoft.visualstudio.azure.containers.tools.targets.1.17.0.nupkg.sha512",
     "C:\\Users\\shepe\\.nuget\\packages\\microsoft.win32.primitives\\4.3.0\\microsoft.win32.primitives.4.3.0.nupkg.sha512",
     "C:\\Users\\shepe\\.nuget\\packages\\mono.texttemplating\\2.2.1\\mono.texttemplating.2.2.1.nupkg.sha512",
     "C:\\Users\\shepe\\.nuget\\packages\\netstandard.library\\1.6.1\\netstandard.library.1.6.1.nupkg.sha512",
@@ -103,5 +104,12 @@
     "C:\\Users\\shepe\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
     "C:\\Users\\shepe\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Ошибка чтения файла кэша D:\\C# WEB\\ASP\\OrdersApiApp-withSLN\\OrdersApiApp\\obj\\project.nuget.cache: Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }
