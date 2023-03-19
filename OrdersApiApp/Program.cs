@@ -107,17 +107,12 @@ app.MapGet("/orderProduct/getProductsInOrder", async (HttpContext context, IDaoO
 
 app.MapGet("/bill", async (HttpContext context, IDaoOrderProduct dao, int id) =>
 {
-    float totalPrice = 0;
-    List<Product> products = new List<Product>();
-    List<OrderProduct> orderProducts = await dao.GetByOrderId(id);
-    // Собираем продукты заказа и суммируем цену товаров
-    foreach(OrderProduct orderProduct in orderProducts)
-    {
-        products.Add(orderProduct.Product);
-        totalPrice += orderProduct.Product.Price * orderProduct.CountProduct;
-    }
-    var bill = new { Products = products, TotalPrice = totalPrice };
-    return bill;
+    // указываем id заказа
+    Bill bill = await dao.GetBill(id);
+    return new {
+        Products = bill.GetProducts(),
+        TotalPrice = bill.GetTotalPrice()
+    };
 });
 
 // Product

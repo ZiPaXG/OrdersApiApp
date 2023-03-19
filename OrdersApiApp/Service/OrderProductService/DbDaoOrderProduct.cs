@@ -78,5 +78,20 @@ namespace OrdersApiApp.Service.OrderProductService
             await context.SaveChangesAsync();
             return orderProduct;
         }
+
+        public async Task<Bill> GetBill(int id)
+        {
+            float totalPrice = 0;
+            List<Product> products = new List<Product>();
+            List<OrderProduct> orderProducts = await GetByOrderId(id);
+            // Собираем продукты заказа и суммируем цену товаров
+            foreach(OrderProduct orderProduct in orderProducts)
+            {
+                products.Add(orderProduct.Product);
+                totalPrice += orderProduct.Product.Price * orderProduct.CountProduct;
+            }
+            Bill bill = new Bill(products, totalPrice);
+            return bill;
+        }
     }
 }
