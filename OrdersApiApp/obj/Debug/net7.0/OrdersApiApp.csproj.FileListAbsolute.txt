@@ -76,3 +76,10 @@ D:\C# WEB\ASP\OrdersApiApp-withSLN\OrdersApiApp\obj\Debug\net7.0\scopedcss\bundl
 D:\C# WEB\ASP\OrdersApiApp-withSLN\OrdersApiApp\obj\Debug\net7.0\OrdersApiApp.csproj.CopyComplete
 D:\C# WEB\ASP\OrdersApiApp-withSLN\OrdersApiApp\obj\Debug\net7.0\OrdersApiApp.genruntimeconfig.cache
 D:\C# WEB\ASP\OrdersApiApp-withSLN\OrdersApiApp\obj\Debug\net7.0\ref\OrdersApiApp.dll
+D:\C# WEB\ASP\OrdersApiApp-withSLN\OrdersApiApp\bin\Debug\net7.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\C# WEB\ASP\OrdersApiApp-withSLN\OrdersApiApp\bin\Debug\net7.0\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\C# WEB\ASP\OrdersApiApp-withSLN\OrdersApiApp\bin\Debug\net7.0\Microsoft.IdentityModel.Logging.dll
+D:\C# WEB\ASP\OrdersApiApp-withSLN\OrdersApiApp\bin\Debug\net7.0\Microsoft.IdentityModel.Protocols.dll
+D:\C# WEB\ASP\OrdersApiApp-withSLN\OrdersApiApp\bin\Debug\net7.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+D:\C# WEB\ASP\OrdersApiApp-withSLN\OrdersApiApp\bin\Debug\net7.0\Microsoft.IdentityModel.Tokens.dll
+D:\C# WEB\ASP\OrdersApiApp-withSLN\OrdersApiApp\bin\Debug\net7.0\System.IdentityModel.Tokens.Jwt.dll
