@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+https://go.microsoft.com/fwlink/?LinkID=208121.
+-->
+<Project>
+  <PropertyGroup>
+    <_PublishTargetUrl>D:\C# WEB\ASP\OrdersApiApp-withSLN\Deploy</_PublishTargetUrl>
+    <History>True|2023-03-29T14:26:23.9104675Z;True|2023-03-29T17:25:22.0608299+03:00;</History>
+    <LastFailureDetails />
+  </PropertyGroup>
+</Project>
